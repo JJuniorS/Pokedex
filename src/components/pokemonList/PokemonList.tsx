@@ -7,7 +7,7 @@ type Pokemon = {
 }
 
 function PokemonList() {
-  const { data: pokemons } = usePokeApi<Pokemon[]>('https://pokeapi.co/api/v2/pokemon/?limit=10')
+  const { data: pokemons } = usePokeApi<Pokemon[]>('https://pokeapi.co/api/v2/pokemon/?limit=1000')
 
   return (
     <>

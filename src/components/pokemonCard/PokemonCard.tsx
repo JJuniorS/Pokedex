@@ -1,5 +1,6 @@
 import { usePokeDetailsApi } from "../../hooks/usePokeApi";
 import './PokemonCard.css';
+import PokemonTypes from "../pokemonTypes/pokemonTypes";
 
 
 type props = {
@@ -17,37 +18,46 @@ type pokeDetails = {
     sprites: {
         front_default: string;
     }
-    
+
 }
 
 function PokemonList(props: props) {
-    
+
     const { data: pokeDetails } = usePokeDetailsApi<pokeDetails>(props.url)
 
     const types = pokeDetails?.types.map(item => {
         return item.type.name
     })
 
-    let typeCss = ''
+    let baseType = ''
     types?.map((type, index) => {
-        if(index == 0){
-            typeCss = type
+        if (index == 0) {
+            baseType = type
         }
-        
+
     })
-    
+
     return (
-        <div className="col-md-2 " style={{padding: 10}}>
-            <div className={"card " + typeCss}>
+        <div className="col-md-2 " style={{ padding: 10 }}>
+            <div className={"card " + baseType}>
                 <h5 className="card-header pokeName">{pokeDetails?.name.toUpperCase()}</h5>
                 <div className="card-body">
-                    <p className="pokeIndice">#{pokeDetails?.id}
-                    
-                    </p>
+                    <div className="row">
+                        <div className="col-md-5">
+                            <p className="pokeIndice">#{pokeDetails?.id} </p>
+                        </div>
+                        <div className="col-md-7">
+                            {types?.map(type => {
+                                return (
+                                    <PokemonTypes key={type} type={type} />
+                                )
+                            })}
+                        </div>
+                    </div>
                     <img src={pokeDetails?.sprites.front_default} />
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
