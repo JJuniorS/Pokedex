@@ -1,6 +1,6 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css' ;
-import PokemonList from './components/pokemon/PokemonList'
+import PokemonList from './components/pokemonList/PokemonList'
 
 function App() {
   return (

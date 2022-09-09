@@ -1,0 +1,76 @@
+.pokeName {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.pokeIndice {
+    text-align: start;
+    font-weight: bold;
+}
+
+.grass {
+    background-color: #78c850;
+}
+
+.normal {
+    background-color: #A8A878;
+}
+
+.water {
+    background-color: #6890F0;
+}
+
+.ice {
+    background-color: #86D1F3;
+}
+
+.fire {
+    background-color: #F08030;
+}
+
+.dragon {
+    background-color: #7038F8;
+}
+
+.electric {
+    background-color: #F8D030;
+}
+
+.bug {
+    background-color: #A8B820;
+}
+
+.fairy {
+    background-color: #EE99AC;
+}
+
+.rock {
+    background-color: #B8A038;
+}
+
+.steel {
+    background-color: #42BD94;
+}
+
+.poison {
+    background-color: #A040A0;
+}
+
+.ghost { background-color: #705898;
+}
+
+.dark {
+    background-color: #5A5979;
+}
+
+.flying {
+    background-color: #4A677D;
+}
+
+.fighting {
+    background-color: #994025;
+}
+
+.psychic {
+    background-color: #F85888;
+}
+    

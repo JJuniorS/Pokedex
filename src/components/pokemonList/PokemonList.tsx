@@ -1,5 +1,5 @@
 import { usePokeApi } from "../../hooks/usePokeApi"
-import PokemonCard from './PokemonCard'
+import PokemonCard from '../pokemonCard/PokemonCard'
 
 type Pokemon = {
   name: string;
@@ -7,16 +7,18 @@ type Pokemon = {
 }
 
 function PokemonList() {
-  const { data: pokemons } = usePokeApi<Pokemon[]>('https://pokeapi.co/api/v2/pokemon/?limit=100')
+  const { data: pokemons } = usePokeApi<Pokemon[]>('https://pokeapi.co/api/v2/pokemon/?limit=10')
 
   return (
-    <div className="row">
+    <>
+      <div className="row">
         {pokemons?.map(poke => {
           return (
             <PokemonCard key={poke.name} url={poke.url} />
           )
         })}
-    </div>
+      </div>
+    </>
   )
 }
 
