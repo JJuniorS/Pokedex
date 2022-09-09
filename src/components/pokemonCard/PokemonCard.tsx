@@ -1,6 +1,6 @@
 import { usePokeDetailsApi } from "../../hooks/usePokeApi";
 import './PokemonCard.css';
-import PokemonTypes from "../pokemonTypes/pokemonTypes";
+import PokemonTypes from "../pokemonTypes/PokemonTypes";
 
 
 type props = {
