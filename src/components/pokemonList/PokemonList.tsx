@@ -15,7 +15,7 @@ function PokemonList() {
   }, [])
 
   function AtualizarLista(limit: string) {
-    api.get(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}`).then(response => {
+    api.get(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}`).then((response) => {
       setPokemons(response.data['results']);
     });
   }
@@ -23,7 +23,7 @@ function PokemonList() {
   return (
     <>
       <div className="row">
-        <button onClick={() => AtualizarLista('20')}></button>
+        <button onClick={() => AtualizarLista("20")}></button>
         {pokemons?.map(poke => {
           return (
             <PokemonCard key={poke.name} url={poke.url} />
