@@ -1,6 +1,7 @@
-import { usePokeDetailsApi } from "../../hooks/usePokeApi";
+import { api } from '../../services/api';
 import './PokemonCard.css';
 import PokemonTypes from "../pokemonTypes/PokemonTypes";
+import { useEffect, useState } from 'react';
 
 
 type props = {
@@ -23,7 +24,13 @@ type pokeDetails = {
 
 function PokemonList(props: props) {
 
-    const { data: pokeDetails } = usePokeDetailsApi<pokeDetails>(props.url)
+    const [ pokeDetails, setPokeDetails ] = useState<pokeDetails>()
+
+    useEffect(() => {
+        api.get<pokeDetails>(props.url).then(response => {
+            setPokeDetails(response.data);
+        });
+      });
 
     const types = pokeDetails?.types.map(item => {
         return item.type.name
