@@ -22,7 +22,7 @@ type pokeDetails = {
 
 }
 
-function PokemonList(props: props) {
+function PokemonCard(props: props) {
 
     const [ pokeDetails, setPokeDetails ] = useState<pokeDetails>()
 
@@ -68,4 +68,4 @@ function PokemonList(props: props) {
     )
 }
 
-export default PokemonList
+export default PokemonCard

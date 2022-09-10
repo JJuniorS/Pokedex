@@ -1,0 +1,14 @@
+.btnImg {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;   
+    
+}
+
+.imageBtn {
+    width: 3rem;
+}
+
+.divBtns {
+    text-align: start;
+}
