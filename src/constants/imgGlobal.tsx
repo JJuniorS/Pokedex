@@ -32,13 +32,12 @@ import waterIcon from '../assets/icons/water.svg'
 
 //#endregion
 
-
 export {
     //Img sobre gerações 
     firstGenImg, secondGenImg, thirdGenImg, fourthGenImg, fifthGenImg, sixthGenImg, seventhGenImg,
 
     // Icones dos tipos de pokemon
     bugIcon, darkIcon, dragonIcon, electricIcon, fairyIcon, fightingIcon, fireIcon, flyingIcon, ghostIcon, grassIcon, groundIcon,
-    iceIcon, normalIcon, poisonIcon, psychicIcon, rockIcon, steelIcon, waterIcon
+    iceIcon, normalIcon, poisonIcon, psychicIcon, rockIcon, steelIcon, waterIcon,
 }
 

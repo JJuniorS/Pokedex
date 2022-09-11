@@ -17,10 +17,11 @@ type Pokemon = {
 function PokemonList() {
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [search, setSearch] = useState('')
+
   const [modalError, setModalError] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
 
   const handleClose = () => setModalError(false);
-  const handleShow = () => setModalError(true);
 
   useEffect(() => {
     AtualizarLista(9, 0)
@@ -42,22 +43,28 @@ function PokemonList() {
   }
 
   function BuscarPokemon(nome: string) {
-    api.get(`https://pokeapi.co/api/v2/pokemon/${nome}`)
-    .then((response) => {
-      if (response.status == 200) {
-        let data: Pokemon[] = [{
-          name: response.data['name'],
-          url: `https://pokeapi.co/api/v2/pokemon/${nome}`
-        }]
-        setPokemons(data);
-      }
-      else {
-        setModalError(true)
-      }
-    })
-    .catch(err => {
+    if (nome == '') {
+      setErrorMsg('Digite um valor para busca')
       setModalError(true)
-    });
+    } else {
+      api.get(`https://pokeapi.co/api/v2/pokemon/${nome}`)
+        .then((response) => {
+          if (response.status == 200) {
+            let data: Pokemon[] = [{
+              name: response.data['name'],
+              url: `https://pokeapi.co/api/v2/pokemon/${nome}`
+            }]
+            setPokemons(data);
+          }
+          else {
+            setModalError(true)
+          }
+        })
+        .catch(err => {
+          setErrorMsg('Não foi possível localizar um pokemon com esse nome ou id')
+          setModalError(true)
+        });
+    }
   }
 
   return (
@@ -87,10 +94,7 @@ function PokemonList() {
       </div>
 
       <Modal show={modalError} onHide={handleClose} className="modal_content" >
-        <Modal.Header className='modalBackground'>
-          <Modal.Title>Error</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className='modalBackground'>Não foi possível localizar um pokemon com esse nome ou id</Modal.Body>
+        <Modal.Body className='modalBackground'>{errorMsg}</Modal.Body>
       </Modal>
     </>
   )
