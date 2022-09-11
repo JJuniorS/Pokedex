@@ -5,6 +5,7 @@ import './PokemonList.css';
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import PokemonCard from '../pokemonCard/PokemonCard'
+import Modal from 'react-bootstrap/Modal';
 
 type Pokemon = {
   name: string;
@@ -16,10 +17,20 @@ type Pokemon = {
 function PokemonList() {
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [search, setSearch] = useState('')
+  const [modalError, setModalError] = useState(false)
+
+  const handleClose = () => setModalError(false);
+  const handleShow = () => setModalError(true);
 
   useEffect(() => {
     AtualizarLista(9, 0)
   }, [])
+
+  useEffect(() => {
+    setTimeout(() => {
+      setModalError(false)
+    }, 3000)
+  }, [modalError])
 
   function AtualizarLista(limit: number, startIndex: number) {
     api.get(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}`).then((response) => {
@@ -31,18 +42,21 @@ function PokemonList() {
   }
 
   function BuscarPokemon(nome: string) {
-    api.get(`https://pokeapi.co/api/v2/pokemon/${nome}`).then((response) => {
-      if(response.status == 200){
+    api.get(`https://pokeapi.co/api/v2/pokemon/${nome}`)
+    .then((response) => {
+      if (response.status == 200) {
         let data: Pokemon[] = [{
           name: response.data['name'],
           url: `https://pokeapi.co/api/v2/pokemon/${nome}`
         }]
         setPokemons(data);
       }
-      else throw new Error('HTTP response status not code 200 as expected.');
-
-      
-      
+      else {
+        setModalError(true)
+      }
+    })
+    .catch(err => {
+      setModalError(true)
     });
   }
 
@@ -60,7 +74,7 @@ function PokemonList() {
         </div>
         <div className='col-md-4 divSearch'>
           <input className='inputSearch' placeholder='Nome do pokemon' value={search} onChange={(e) => setSearch(e.target.value)} />
-          <button className='btnSearch'role="button" onClick={() => BuscarPokemon(search.toLowerCase())}>Buscar</button>
+          <button className='btnSearch' role="button" onClick={() => BuscarPokemon(search.toLowerCase())}>Buscar</button>
         </div>
       </div>
 
@@ -71,6 +85,13 @@ function PokemonList() {
           )
         })}
       </div>
+
+      <Modal show={modalError} onHide={handleClose} className="modal_content" >
+        <Modal.Header className='modalBackground'>
+          <Modal.Title>Error</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className='modalBackground'>Não foi possível localizar um pokemon com esse nome ou id</Modal.Body>
+      </Modal>
     </>
   )
 }

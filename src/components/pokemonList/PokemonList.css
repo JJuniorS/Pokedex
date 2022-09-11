@@ -1,47 +1,47 @@
 .btnImg {
-    background-color: Transparent;
-    background-repeat: no-repeat;
-    border: none;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
 
 }
 
 .imageBtn {
-    width: 3rem;
+  width: 3rem;
 }
 
 .divBtns {
-    text-align: start;
+  text-align: start;
 }
 
 .divSearch {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
 }
 
 .inputSearch {
-    width: 60%;
-    height: 2.5rem;
-    border: 0;
-    text-align: center;
+  width: 60%;
+  height: 2.5rem;
+  border: 0;
+  text-align: center;
 
-    border-radius: 50px;
-    border-color: transparent;
+  border-radius: 50px;
+  border-color: transparent;
 
-    background: #111;
-    color: rgb(255, 255, 255);
-    font-family: 'Courier New', Courier, monospace;
+  background: #111;
+  color: rgb(255, 255, 255);
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .btnSearch {
-    width: 25%;
-    height: 2.3rem;
-    text-align: center;
+  width: 25%;
+  height: 2.3rem;
+  text-align: center;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btnSearch {
@@ -61,18 +61,16 @@
 
 .btnSearch:before {
   content: "";
-  background: linear-gradient(
-    45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
-  );
+  background: linear-gradient(45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000);
   position: absolute;
   top: -2px;
   left: -2px;
@@ -91,9 +89,11 @@
   0% {
     background-position: 0 0;
   }
+
   50% {
     background-position: 400% 0;
   }
+
   100% {
     background-position: 0 0;
   }
@@ -109,4 +109,42 @@
   left: 0;
   top: 0;
   border-radius: 10px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+
+  width: 50%;
+  height: 100%;
+  background-color: transparent !important;
+  
+}
+
+.modal_content {
+  position: fixed;
+  top: 0rem;
+  left: 70rem;
+  width: 25%;
+  height: 30%;
+
+  background-color: Transparent !important;
+  background-repeat: no-repeat;
+  border: none ;
+
+  color: white;
+}
+
+.modal-content {
+  border: none
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+.modalBackground {
+  background-color: #932c2c;
+  border: none ;
+  
 }
