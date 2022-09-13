@@ -85,7 +85,7 @@ function PokemonList() {
         </div>
       </div>
 
-      <div className="row">
+      <div className="row cardList">
         {pokemons?.map(poke => {
           return (
             <PokemonCard key={poke.name} url={poke.url} />
