@@ -8,6 +8,14 @@
     color: black;
 }
 
+.card {
+transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
 .grass {
     background-color: #78c850;
 }
